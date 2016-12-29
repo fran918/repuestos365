@@ -1,0 +1,13 @@
+<div class="promotions">
+    <div class="bg-image"></div>
+    <div class="row">
+        <div class="col-xs" *ngFor="let item of brandImages; let i = index">
+            <img class="brand-img shadow-image" [src]="item.src" alt="{{item.alt}}">
+        </div>
+    </div>
+    <div class="row row-promo">
+        <div class="col-xs">
+            <img [src]="promoImgUrl" alt="...">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+$fa-font-path: "/font-awesome-4.7.0/fonts";
+@import "../font-awesome-4.7.0/scss/font-awesome.scss";
+* {
+    font-family: 'Contrail One', cursive;
+}
+
+body {
+    background: #333;
+}
+
+.container {
+    padding-top: 5rem;
+}
+
+button,
+input {
+    border-radius: 0 !important;
+}
+
+input,
+textarea {
+    background: rgba(51, 51, 51, 0.7) !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bg-image {
+    margin: 0 !important;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    opacity: .7;
+}
+
+.img-circle {
+    border-radius: 50%;
+}

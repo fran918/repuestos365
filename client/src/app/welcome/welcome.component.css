@@ -1,0 +1,21 @@
+
+
+.welcome { font-family: 'Lato', sans-serif; font-weight: 400; } 
+.welcome * { color: #fff; } 
+.welcome button, .welcome label { font-weight: bolder; } 
+.welcome .row .col-left, .welcome .row .col-right { background: rgba(51, 51, 51, 0.5); }
+.welcome .row .col-left { padding-top: 2rem; padding-bottom: 2rem; font-size: .9em; } 
+.welcome .row .col-left p { font-size: .8em; } 
+.welcome .row .col-right { padding-left: 5rem !important; padding-right: 5rem !important; padding-bottom: 1rem !important; } 
+@media (min-width: 544px) { .welcome { margin-top: 2rem; } 
+.welcome .col-left { padding: 3rem 5rem !important; } 
+.welcome .col-left p { font-size: 1em !important; } 
+.welcome .col-right { padding-top: 3rem !important; } } 
+@media (min-width: 768px) { .welcome { margin-top: 2rem; } 
+.welcome .col-left { padding: 5rem 3rem !important; } 
+.welcome .col-left p { font-size: 1.2em !important; } 
+.welcome .col-right { padding-top: 5rem !important; } } 
+@media (min-width: 992px) { .welcome { margin-top: 1rem; } 
+.welcome .col-left { padding: 7rem 3rem !important; } 
+.welcome .col-left p { font-size: 1.5em !important; } 
+.welcome .col-right { padding-top: 5rem !important; } } 

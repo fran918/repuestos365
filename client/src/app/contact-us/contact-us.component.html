@@ -1,0 +1,40 @@
+<div class="contac-us">
+    <div class="bg-image"></div>
+    <div class="row row-info">
+        <div class="col-xs">
+            <h3 class="title">CONTACTANOS:</h3>
+            <div class="info">
+                <p><strong>Direcccion: </strong><span>Palacio de Carondelet, Gabriel García Moreno, Quito, Ecuador</span></p>
+                <p><strong>Telefono: </strong><span><a href="tel:+59398492603">+59398492603</a></span></p>
+                <p><strong>Email: </strong><span><a href="mailto:alguien@dominio.com">alguien@dominio.com</a></span></p>
+            </div>
+        </div>
+    </div>
+    <div class="row row-content">
+        <div class="col-lg col-left">
+            <div class="row row-form-email">
+                <!-- <div class="col-md">
+                    <h3 class="title">CONTACTANOS:</h3>
+                    <div class="info">
+                        <p><strong>Direcccion: </strong><span>Palacio de Carondelet, Gabriel García Moreno, Quito, Ecuador</span></p>
+                        <p><strong>Telefono: </strong><span><a href="tel:+59398492603">+59398492603</a></span></p>
+                        <p><strong>Email: </strong><span><a href="mailto:alguien@dominio.com">alguien@dominio.com</a></span></p>
+                    </div>
+                </div> -->
+                <div class="col-md">
+                    <app-contact-us-form class="form-email"></app-contact-us-form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg col-right">
+            <!-- this creates a google map on the page with the given lat/lng from -->
+            <!-- the component as the initial center of the map: -->
+
+            <sebm-google-map [latitude]="mapConfi.lat" [longitude]="mapConfi.lng" [zoom]="mapConfi.zoom" [zoomControl]="mapConfi.zoomControl" [zoom]="mapConfi.styles">
+                <sebm-google-map-marker [latitude]="mapConfi.lat" [longitude]="mapConfi.lng"></sebm-google-map-marker>
+            </sebm-google-map>
+        </div>
+    </div>
+
+</div>

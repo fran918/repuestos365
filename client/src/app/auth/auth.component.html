@@ -1,0 +1,64 @@
+
+<div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresar</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
+		<div class="login-form">
+            <form (ngSubmit)="logIn()" #loginForm="ngForm">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Correo Electronico</label>
+					<input id="user" type="email" class="input" [(ngModel)]="modelLogin.email" [ngModelOptions]="{standalone: true}" required #email placeholder="user@dominio.com">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Contraseña</label>
+					<input id="pass" type="password" class="input" data-type="password" [(ngModel)]="modelLogin.password" [ngModelOptions]="{standalone: true}" required #password placeholder="Contraseña">
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Iniciar Sesión" [disabled]="!loginForm.form.valid">
+				</div>
+				<div class="hr"></div>
+                <div class="group">
+					<button type="submit" class="btn btn-default btn-primary" (click)="auth.facebookLogin()">Facebook</button>
+				</div>
+                <div class="group">
+					<button type="submit" class="btn btn-default btn-danger" (click)="auth.googleLogin()">Google</button>
+				</div>
+                <div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Olvidaste tu contraseña?</a>
+				</div>
+			</div>
+            </form>
+            <form (ngSubmit)="signUp()" #signupForm="ngForm">
+			<div class="sign-up-htm">
+				<div class="group">
+					<label for="pass" class="label">Nombre Completo</label>
+					<input id="pass" type="text" class="input" [(ngModel)]="modelSignup.fullname" [ngModelOptions]="{standalone: true}" required #fullname placeholder="Nombre Completo">
+				</div>
+				<div class="group">
+					<label for="user" class="label">Correo Electronico</label>
+					<input id="user" type="email" class="input" [(ngModel)]="modelSignup.email" [ngModelOptions]="{standalone: true}" required #emailsignup placeholder="user@dominio.com">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Contraseña</label>
+					<input id="pass" type="password" class="input" data-type="password"  [(ngModel)]="modelSignup.password" [ngModelOptions]="{standalone: true}" required #passwordsignup placeholder="Contraseña">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Regístrate">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<label for="tab-1">Ya eres Miembro?</label>
+				</div>
+			</div>
+            </form>
+            
+		</div>
+	</div>
+</div>
+

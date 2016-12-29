@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "http://www.informaciondetallada.com/placas/rest/placa/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

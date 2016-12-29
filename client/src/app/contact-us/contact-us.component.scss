@@ -1,0 +1,173 @@
+.contac-us {
+    .bg-image {
+        background-image: url('dist/assets/welcome/welcome-bg5.jpg');
+    }
+    .row-info,
+    .col-left {
+        background: rgba(51, 51, 51, .7);
+    }
+    .row-info {
+        color: #fff;
+        padding-top: 2rem !important;
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: lighter;
+        }
+        a:hover a:active {
+            font-weight: bolder !important;
+        }
+    }
+    .row-content {
+        margin-top: 0 !important;
+        .col-left {}
+        .col-right {
+            padding: 0 !important;
+            height: 300px;
+            .sebm-google-map-container {
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 544px) {
+    .contac-us {
+        .row-info {
+            div[class^="col-"] {
+                .title {
+                    font-size: 1em;
+                }
+                .info {
+                    //padding: 1rem;
+                    font-size: .6em;
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        .row-content {
+            .col-left {
+                .row-form-email {
+                    padding-top: 1.5rem;
+                    padding-bottom: 1.5rem;
+                    div[class^="col-"] {
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media (min-width: 544px) {
+    .contac-us {
+        .row-info {
+            div[class^="col-"] {
+                .title {
+                    font-size: 1em;
+                }
+                .info {
+                    //padding: 1rem;
+                    font-size: .6em;
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        .row-content {
+            //padding-top: 5rem;
+            .col-left {
+                .row-form-email {
+                    padding-top: 1.5rem;
+                    padding-bottom: 1.5rem;
+                    div[class^="col-"] {
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .contac-us {
+        .bg-image {
+            height: 100% !important;
+        }
+        .row-info {
+            div[class^="col-"] {
+                .title {
+                    font-size: 1.5em;
+                }
+                .info {
+                    //padding: 1rem;
+                    font-size: .7em;
+                }
+            }
+        }
+        .row-content {
+            //padding-top: 5rem;
+            .col-left {
+                .row-form-email {
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    div[class^="col-"] {
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .contac-us {
+        .bg-image {
+            height: 100% !important;
+        }
+        .row-info {
+            div[class^="col-"] {
+                .title {
+                    font-size: 1.5em;
+                }
+                .info {
+                    padding: 0 1rem 1rem 1rem !important;
+                    font-size: .8em;
+                    p {
+                        margin-bottom: .2rem;
+                    }
+                }
+            }
+        }
+        .row-content {
+            //padding-top: 5rem;
+            .col-left {
+                .row-form-email {
+                    div[class^="col-"] {
+                        .form-email {}
+                    }
+                }
+            }
+            .col-right {
+                height: 400px;
+                .sebm-google-map-container {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {}

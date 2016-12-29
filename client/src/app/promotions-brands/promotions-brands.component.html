@@ -1,0 +1,15 @@
+<div class="promotions-brands">
+    <div class="bg-image"></div>
+    <div class="row">
+        <div class="col-md col-promo">
+            <img class="img-promo" [src]="imgPromoUrl" alt="">
+        </div>
+    </div>
+    <div class="row row-brand">
+        <div class="col-md-3 col-xs-4 col-brand" *ngFor="let item of brandImages; let i = index">
+            <a routerLink="/promotions">
+                <img class="img-brands" [src]="item.src" alt="{{item.alt}}">
+            </a>
+        </div>
+    </div>
+</div>

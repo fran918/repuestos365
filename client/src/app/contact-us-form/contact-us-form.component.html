@@ -1,0 +1,22 @@
+<form>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="emailModel.name" [ngModelOptions]="{standalone: true}" required #name placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <input type="email" class="form-control" [(ngModel)]="emailModel.email" [ngModelOptions]="{standalone: true}" required #email placeholder="Email">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="emailModel.subject" [ngModelOptions]="{standalone: true}" required #subject placeholder="Asunto">
+    </div>
+    <div class="form-group">
+        <input type="tel" class="form-control" [(ngModel)]="emailModel.phone" [ngModelOptions]="{standalone: true}" #phone placeholder="Temefono">
+    </div>
+    <div class="form-group">
+        <!-- <input type="text" class="form-control" #message placeholder="Mensaje"> -->
+        <textarea class="form-control" [(ngModel)]="emailModel.message" [ngModelOptions]="{standalone: true}" required #message rows="3" placeholder="Mensaje"></textarea>
+    </div>
+    <div class="form-group btn-submit">
+        <button type="submit" class="btn btn-default btn-info" (click)="sendEmail(emailModel)">Enviar</button>
+        <!-- <button type="submit" class="btn btn-default btn-info" (click)="auth.login(username.value, password.value)">Iniciar Sesión</button> -->
+    </div>
+</form>
