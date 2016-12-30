@@ -31,6 +31,8 @@ import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands
 import { LogoComponent } from './logo/logo.component';
 import { ContactUsFormComponent } from './contact-us-form/contact-us-form.component';
 import { SearchPlateComponent } from './search-plate/search-plate.component';
+import { BusquedaRepuestoComponent } from './busqueda-repuesto/busqueda-repuesto.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { SearchPlateComponent } from './search-plate/search-plate.component';
     PromotionsBrandsComponent,
     LogoComponent,
     ContactUsFormComponent,
-    SearchPlateComponent
+    SearchPlateComponent,
+    BusquedaRepuestoComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

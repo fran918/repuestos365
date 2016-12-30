@@ -9,8 +9,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ApiRestService {
-  //private baseUrl: string = 'http://localhost:8080'; 
- private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com/';
+  private baseUrl: string = 'http://localhost:8080'; 
+ //private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com/';
   constructor(private http: Http) { }
   //: Observable<Email[]>
 
@@ -38,8 +38,15 @@ getCarPlate3(carPlate) {
   }*/
 
 getCarPlate(carPlate): Observable <any>{
-  return this.http.get('http://www.informaciondetallada.com/busqueda/rest/placa/JBE0131')
-  .map(response => response.json());}
+  let apiUrl = 'http://www.informaciondetallada.com/busqueda/rest/placa/'
+    // Tried adding headers with no luck
+    //const headers = new Headers();
+    //headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    //headers.append('Access-Control-Allow-Methods', 'GET');
+    //headers.append('Access-Control-Allow-Origin', '*');
+    return this.http.get(apiUrl + carPlate)
+  .map(response => response.json());
+}
   /*
   getCarPlate(carPlate) : Observable<any> {
 const headers = new Headers();

@@ -51,20 +51,8 @@ export class WelcomeComponent implements OnInit {
     if(this.auth.authenticated()){
       this.router.navigateByUrl('/home');
     }
-    this.fna = this.bgImages.length - 1;
-    this.bgImage = this.bgImages[this.fna];
-    let i = 0;
-    let timer = Observable.timer(10000,5000);
-    timer.subscribe(t=> {
-      this.state = this.state === 'open' ? 'closed' : 'open';
-      this.bgImage = this.bgImages[i];
-      //console.log(this.bgImage);
-      //console.log(this.state);
-      i++;
-      if(i > 4){
-        i = 0;
-      }
-    });
+    this.bgImage = this.bgImages[0];
+    
 
     
   }

@@ -4,6 +4,12 @@ var express = require('express'),
     _http = require('http'),
     request = require("request");
 
+    //MLAB
+var mongojs = require('mongojs');
+var db = mongojs('mongodb://fran:fran@ds145128.mlab.com:45128/rep365')
+
+
+
 var smtpTransport = nodemailer.createTransport('SMTP', {
     service: 'Gmail',
     auth: {
@@ -77,5 +83,56 @@ router.post('/auth-signup', function(req, res) {
         res.json(body);
     });
 });
+
+//CONEXION MLAB
+
+//GET REPUESTOS
+router.get('/repuestos', function(req,res,next){
+   // res.send('REPUESTOS');
+    db.repuestos.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos);
+        }
+})
+});
+
+//GET MI PERFIL
+
+router.get('/perfil/:id', function(req,res,next){
+    //res.send('task');
+    db.users_perfil.findOne({user_id:req.params.id},function(err,task){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(task);
+        }
+});
+});
+
+//SAVE UN ITEM
+router.post('/addrepuestocarrito', function(req,res,next){
+    //res.send('task');
+    var item = req.body;
+
+    
+        if(!item.title || !(item._id == '')){
+            res.status(400);
+            res.json({"error":"Bad Data"});
+        }else{
+            db.carrito.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+        }
+    
+});
+
+
+
+// END-CONEXION MLAB
 
 module.exports = router;

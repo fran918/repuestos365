@@ -24,8 +24,8 @@ export class AuthService {
     callbackURL: myConfig.callbackURL,
   });
 
-  //private baseUrl: string = 'http://localhost:8080';
-  private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com/';
+  private baseUrl: string = 'http://localhost:8080';
+ // private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com/';
   
   constructor(private router: Router, private http: Http) {
     // Add callback for lock `authenticated` event
@@ -65,7 +65,7 @@ export class AuthService {
       email: email,
       password: password,
     }, function(err) {
-	  alert('El usuario ya esta registrado!!!');
+	  alert('El usuario ya esta registrado!!!'+err);
       /*if (err.message == 'usuario ya exists') {
         alert("algo salió mal: " + err.message);
         console.log(err);

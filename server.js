@@ -1,6 +1,6 @@
 //  OpenShift sample Node application
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || 'localhost',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
@@ -50,7 +50,7 @@ app.use(cors(corsOptions));*/
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', mainRouter);
 app.use('/api', apiRouter);
-app.use('/placa', proxy('http://www.informaciondetallada.com/busquedas/rest/placa/'));
+app.use('/placa', proxy('http://www.informaciondetallada.com/busqueda/rest/placa/'));
 
 // Config URL MongoDB
 if (mongoURL == null && process.env.MLAB_SERVICE_NAME) {
@@ -147,23 +147,6 @@ app.get('/pagecount', function(req, res) {
         res.send('{ pageCount: -1 }');
     }
 });
-
-//HEADERS
-app.use(function(req, res, next){
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-})
 
 // error handling
 app.use(function(err, req, res, next) {

@@ -5,13 +5,16 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PromotionsBrandsComponent } from './promotions-brands/promotions-brands.component';
 import { PromotionsComponent } from './promotions/promotions.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 export const routes: Routes = [
   { path: '',       component: WelcomeComponent },
   { path: 'welcome',   component: WelcomeComponent },
   { path: 'home',   component: HomeComponent },
   { path: 'contact-us',   component: ContactUsComponent },
+  { path: 'perfil',     component: PerfilComponent },
   { path: 'promotions-brands',   component: PromotionsBrandsComponent },
   { path: 'promotions',   component: PromotionsComponent },
   { path: '**',     component: PageNotFoundComponent }, 
+  
 ];
