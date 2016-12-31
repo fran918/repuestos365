@@ -77,7 +77,7 @@ router.post('/auth-signup', function(req, res) {
     };
     request(options, function(error, response, body) {
         if (error) throw new Error(error);
-        console.log(body);
+        //console.log(body);
         res.json(body);
     });
 });
@@ -87,13 +87,26 @@ router.post('/auth-signup', function(req, res) {
 //GET REPUESTOS
 router.get('/repuestos', function(req,res,next){
    // res.send('REPUESTOS');
-    db.repuestos.find(function(err,repuestos){
+    db.carrito.find(function(err,repuestos){
         if(err){
             res.send(err);
         }else{
             res.json(repuestos);
         }
 })
+});
+
+//GET REPUESTO
+
+router.get('/repuesto/:id', function(req,res,next){
+    //console.log(req.params.id);
+   db.carrito.findOne({_id:mongojs.ObjectId(req.params.id)},function(err,task){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(task);
+        }
+});
 });
 
 //GET MI PERFIL
@@ -121,17 +134,61 @@ router.get('/placa/:id', function(req,res,next){
 });
 });
 
+//GET VENDEDOR
+router.get('/vendedor/:id', function(req,res,next){
+    db.vendedor.findOne({user_id:req.params.id},function(err,placa){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(placa);
+        }
+});
+});
+
 //SAVE UN ITEM
 router.post('/addrepuestocarrito', function(req,res,next){
-    //res.send('task');
     var item = req.body;
 
-    console.log(item);
-       // if(!item.cantidad || !(item.repuesto == '')){
-       //     res.status(400);
-       //     res.json({"error":"Bad Data"});
-        //}else{
+
             db.carrito.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+    
+});
+
+//SAVE PLACA
+router.post('/addplaca', function(req,res,next){
+    var item = req.body;
+            db.vehiculo.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+    
+});
+
+//SAVE PRIMER PERFIL
+router.post('/saveperfil', function(req,res,next){
+    var item = req.body;
+
+    //console.log(item);
+            db.users_perfil.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+    
+});
+//SAVE VENDEDOR
+router.post('/addvendedor', function(req,res,next){
+    var item = req.body;
+    //console.log(item);
+            db.vendedor.save(item,function(err, item){
                 if(err){
                     res.send(err);
                 }
@@ -144,7 +201,7 @@ router.post('/addrepuestocarrito', function(req,res,next){
 router.put('/editperfil/:id', function(req,res,next){
     var perfil = req.body;
     var updPerfil = {};
-
+//console.log(perfil);
     if(perfil.nombre){
         updPerfil.nombre = perfil.nombre;
     }
@@ -158,7 +215,8 @@ router.put('/editperfil/:id', function(req,res,next){
         res.status(400);
         res.json({"error":"BadData"});
     }else{
-        db.users_perfil.update({_id:mongojs.ObjectId(req.params.id)},updPerfil,{},function(err,task){
+        //console.log(perfil);
+        db.users_perfil.update({user_id:req.params.id},updPerfil,{},function(err,task){
         if(err){
             res.send(err);
         }else{

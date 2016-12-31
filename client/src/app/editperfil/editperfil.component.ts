@@ -12,49 +12,73 @@ import { Perfil } from './Perfil';
 })
 export class EditperfilComponent implements OnInit {
   profile:any;
-perfil:Perfil[];
+perfil:Perfil[]=[];
 perfil2:any = new Object();
+perf:any= new Object();
 nombre:string;
 apellido:string;
 telefono:number;
-
+validar:boolean=false;
+usuarioid:any='';
   constructor(
     private apiPerfilService:apiPerfilService,
      private AuthService:AuthService) { 
-       console.log('this.profile');
             var perfil = this.perfil;
-            this.profile = JSON.parse(localStorage.getItem('profile'));
-            console.log(this.profile.identities[0].user_id);
+           this.profile = JSON.parse(localStorage.getItem('profile'));
+            this.usuarioid=this.profile.identities[0].user_id;
+            console.log(this.usuarioid);
+           // console.log(this.profile.identities[0].user_id);
             this.apiPerfilService.getPerfil(this.profile.identities[0].user_id).subscribe(perfil =>{
-            console.log(perfil);
+           // console.log(perfil);
             this.perfil=perfil;
-           // this.perfil2.nombre=perfil.nombre;
-           // this.perfil2.apellido=perfil.apellido;
-            //this.perfil2.telefono=perfil.telefono;
+            if(perfil){
+            this.perfil2.nombre=perfil.nombre;
+            this.perfil2.apellido=perfil.apellido;
+            this.perfil2.telefono=perfil.telefono; this.validar=true;}else{this.validar=false;}
             //console.log(this.perfil);
             })  
-            //console.log(this.perfil2);
+           // console.log(this.perfil2);
           
   }
 
-updateStatus(event:any){
+  updatePerfil(event:any){
   event.preventDefault();
-
-  var miperfil={
-    _id:this.profile.identities[0].user_id,
-    nombre: this.perf.nombre,
-    apellido: this.perf.apellido,
-    telefono: this.perf.telefono
-  };
-  console.log(miperfil);
-  this.apiPerfilService.updatePerfil(miperfil).subscribe(data => {
+  var newPerfil={
+    "user_idTK":this.usuarioid,
+    "user_id":this.profile.identities[0].user_id,
+    "nombre":this.perfil2.nombre,
+    "apellido":this.perfil2.apellido,
+    "telefono":this.perfil2.telefono
+  }
+  
+  console.log(newPerfil);
+  
+  console.log(this.profile.identities[0].user_id);
+  if(this.validar){
+this.apiPerfilService.updatePerfil(newPerfil).subscribe((miperfil:any) => {
+  this.perfil.push(miperfil);
   });
-  console.log(perfil);
+}else{
+  this.apiPerfilService.addPerfil(newPerfil)
+      .subscribe(miperfil => {
+      this.perfil.push( 
+        {
+          "user_idTK":this.usuarioid,
+          "user_id":this.profile.identities[0].user_id,
+          "nombre":this.perfil2.nombre,
+          "apellido":this.perfil2.apellido,
+          "telefono":this.perfil2.telefono
+        });
+      });
+}
+  
+ // console.log(newPerfil);
 }
 
 
 
   ngOnInit() {
+     
   }
 
 }

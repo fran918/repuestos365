@@ -18,14 +18,10 @@ pedido:Pedido[]=[];
 repuesto:string;
 cantidad:number=1;
 
-  constructor(
-     private AuthService:AuthService,
-     private apiRepuestosService: apiRepuestosService) { 
-this.profile = JSON.parse(localStorage.getItem('profile'));
-       console.log(this.profile);
-      
-        
-  }
+  constructor(private AuthService:AuthService,
+              private apiRepuestosService: apiRepuestosService) { 
+this.profile = JSON.parse(localStorage.getItem('profile'));// console.log(this.profile);
+}
   
 addPedido(event:any){
   event.preventDefault();

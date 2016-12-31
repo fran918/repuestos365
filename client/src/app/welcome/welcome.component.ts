@@ -1,7 +1,6 @@
 import {
   Component,
-  OnInit,
-  Input,
+  OnInit,Input , Output, EventEmitter,
   trigger,
   state,
   style,
@@ -31,6 +30,11 @@ import {bgConfig} from './bgConfig';
   providers: [AuthService]
 })
 export class WelcomeComponent implements OnInit {
+  placa:any;
+   miplaca(valor){
+    this.placa=valor;
+    console.log('welcomecomponent'+this.placa);
+  }
   state = 'open';
   bgImages:any = bgConfig;
   fna:number;

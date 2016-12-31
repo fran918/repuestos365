@@ -26,7 +26,7 @@
                 </a>
             </li>
         </ul>
-        <app-search-plate *ngIf="auth.authenticated()"></app-search-plate>
+        <app-search-plate *ngIf="auth.authenticated()" (miplaca2)="miplaca2($event)"></app-search-plate>
         <div class="float-lg-right">
             <div ngbDropdown class="d-inline-block" *ngIf="auth.authenticated()">
                 <button class="btn btn-link" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> username</button>

@@ -1,30 +1,43 @@
 
-
-<div class="list-group" style="width: 600px; margin-left: auto;margin-right: auto;"> 
-        <div class="list-group-item" *ngFor="let repuesto of repuestos" style="width: 280px;float: left; margin-left:  10px;margin-right: 10px; padding: 15px;"> 
-            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
+<div class="list-group col-md-12" > 
+    <div class="list-group col-md-4" > 
+        <div class="list-group-item" *ngFor="let repuesto of repuestos"> 
+            <div  class="card" style="width: 100%; background-color: #fbfbfb; color: #000000;"> 
         <div class="card-img-top"> 
-            <img src="{{repuesto.img}}"  />
+            <img src=""  />
         </div>
         <div  class="card-block"> 
-            {{repuesto.titulo_repuesto}}
+            Repuesto: {{repuesto.repuesto}}
         </div>
                 <div  class="card-block"> 
-                Marca: {{repuesto.marca_repuesto}}
+                Cantidad: {{repuesto.cantidad}}
                 </div>
-                <div  class="card-block"> 
-                Modelo: {{repuesto.modelo_repuesto}}
-                </div>
-                <div  class="card-block"> 
-                Año: {{repuesto.anio_repuesto}} 
-                </div>
-                <div  class="card-block"> 
-                Color: {{repuesto.color_repuesto}}
-                </div>
-        
         <div  class="card-block"> 
-            <input type="button" value="Elegir"  (click)="addRepuesto(repuesto)" class="btn btn-success">
+            <input type="button" value="Ver Pedido" (click)="ver_pedido(repuesto._id)" class="btn btn-success">
         </div>
         </div>
         </div>
     </div>
+    
+    <div class="list-group col-md-8" *ngIf="verrepuestos"> 
+        <div class="col-md-12"> 
+            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
+        <div class="card-img-top"> 
+            <img src=""  />
+        </div>
+        <div  class="card-block"> 
+           Repuesto: {{verrepuestos.repuesto}}
+        </div>
+                <div  class="card-block"> 
+                Cantidad: {{verrepuestos.cantidad}}
+                </div>
+               
+        
+        <div  class="card-block"> 
+            <input type="button" value="Responder"  class="btn btn-success">
+        </div>
+        </div>
+        </div>
+    </div>
+    
+</div>

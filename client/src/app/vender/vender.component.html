@@ -1,0 +1,28 @@
+<form class="form-inline" (submit)="vender($event)" *ngIf="eresVendedor">
+<div class="list-group" style="width: 100%;"  > 
+        <div class="list-group-item"  style="width: 300px;float: left; margin-left: auto;margin-right: auto;"> 
+            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
+        <div class="card-img-top"> 
+            <img src=""  />
+        </div>
+        <div  class="card-block"> 
+           <h4></h4>
+        </div>
+        <div  class="card-block"> 
+            <h5></h5>
+        </div>
+        <div  class="card-block"> 
+            <h5>Aceptar las Condiciones</h5>
+        </div>
+        <div  class="card-block"> 
+            <input type="checkbox" (click)="aceptarVender()">
+        </div>
+                
+                <div  class="card-block" *ngIf="aceptar"> 
+                    <input type="submit" value="Aceptar" class="btn btn-success">
+                </div>
+        </div>
+        </div>
+    </div>
+</form>
+<app-cotizaciones *ngIf="!eresVendedor"></app-cotizaciones>

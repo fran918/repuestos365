@@ -1,4 +1,4 @@
-import { Component, OnInit , Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -9,8 +9,16 @@ import { AuthService } from '../services/auth.service';
   providers: [AuthService]
 })
 export class MenuComponent implements OnInit {
+  @Output() miplaca: EventEmitter<any> = new EventEmitter();
   public isCollapsed = false;
   menuIcon:string = 'fa-bars';
+  mi_placa:any;
+  miplaca2(valor){
+    console.log(valor);
+    this.mi_placa=valor;
+    this.miplaca.emit(this.mi_placa);
+    console.log('menucomponent'+valor);
+  }
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {

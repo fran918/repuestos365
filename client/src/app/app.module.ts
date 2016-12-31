@@ -35,6 +35,8 @@ import { BusquedaRepuestoComponent } from './busqueda-repuesto/busqueda-repuesto
 import { PerfilComponent } from './perfil/perfil.component';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { EditperfilComponent } from './editperfil/editperfil.component';
+import { VenderComponent } from './vender/vender.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { EditperfilComponent } from './editperfil/editperfil.component';
     BusquedaRepuestoComponent,
     PerfilComponent,
     CotizacionesComponent,
-    EditperfilComponent
+    EditperfilComponent,
+    VenderComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,

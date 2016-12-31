@@ -8,6 +8,8 @@ import { PromotionsComponent } from './promotions/promotions.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { EditperfilComponent } from './editperfil/editperfil.component';
+import { VenderComponent } from './vender/vender.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 
 export const routes: Routes = [
@@ -18,6 +20,8 @@ export const routes: Routes = [
   { path: 'cotizaciones',     component: CotizacionesComponent },
   { path: 'contact-us',   component: ContactUsComponent },
   { path: 'edit-perfil',   component: EditperfilComponent },
+  { path: 'pedidos',   component: PedidosComponent },
+  { path: 'vender',   component: VenderComponent },
   { path: 'promotions-brands',   component: PromotionsBrandsComponent },
   { path: 'promotions',   component: PromotionsComponent },
   { path: '**',     component: PageNotFoundComponent }, 

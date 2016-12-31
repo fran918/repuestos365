@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 
 
 @Component({
@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+@Input() placa:string ='default';
 
 title:string;
 auto:any= new Object() ;
   constructor(
     
-  ) { 
+  ) { console.log(this.placa);
     
 this.auto.marca="KIA";
 this.auto.modelo="SPORTAGE L";
