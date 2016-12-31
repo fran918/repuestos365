@@ -3,12 +3,10 @@ var express = require('express'),
     nodemailer = require('nodemailer'),
     _http = require('http'),
     request = require("request");
-
+    
     //MLAB
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://fran:fran@ds145128.mlab.com:45128/rep365')
-
-
 
 var smtpTransport = nodemailer.createTransport('SMTP', {
     service: 'Gmail',
@@ -111,28 +109,68 @@ router.get('/perfil/:id', function(req,res,next){
 });
 });
 
+//GET PLACA
+router.get('/placa/:id', function(req,res,next){
+    //res.send('task');
+    db.vehiculo.findOne({placa:req.params.id},function(err,placa){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(placa);
+        }
+});
+});
+
 //SAVE UN ITEM
 router.post('/addrepuestocarrito', function(req,res,next){
     //res.send('task');
     var item = req.body;
 
-    
-        if(!item.title || !(item._id == '')){
-            res.status(400);
-            res.json({"error":"Bad Data"});
-        }else{
+    console.log(item);
+       // if(!item.cantidad || !(item.repuesto == '')){
+       //     res.status(400);
+       //     res.json({"error":"Bad Data"});
+        //}else{
             db.carrito.save(item,function(err, item){
                 if(err){
                     res.send(err);
                 }
                 res.json(item);
             });
+        //}
+    
+});
+//UPDATE PERFIL
+router.put('/editperfil/:id', function(req,res,next){
+    var perfil = req.body;
+    var updPerfil = {};
+
+    if(perfil.nombre){
+        updPerfil.nombre = perfil.nombre;
+    }
+    if(perfil.apellido){
+        updPerfil.apellido=perfil.apellido;
+    }
+    if(perfil.telefono){
+        updPerfil.telefono = perfil.telefono;
+    }
+    if(!updPerfil){
+        res.status(400);
+        res.json({"error":"BadData"});
+    }else{
+        db.users_perfil.update({_id:mongojs.ObjectId(req.params.id)},updPerfil,{},function(err,task){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(perfil);
         }
+    });
+    }
     
 });
 
 
-
 // END-CONEXION MLAB
+
 
 module.exports = router;

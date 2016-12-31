@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ApiRestService {
   private baseUrl: string = 'http://localhost:8080'; 
- //private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com/';
+  //private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com';
   constructor(private http: Http) { }
   //: Observable<Email[]>
 
@@ -30,68 +30,16 @@ export class ApiRestService {
       alert('Enviado con Exito');
     });
   }
-/*
-getCarPlate3(carPlate) {
-    return Observable.forkJoin(
-      this.http.get('http://www.informaciondetallada.com/busqueda/rest/placa/JBE0131').map((res:Response) => res.json())
-    );
-  }*/
 
-getCarPlate(carPlate): Observable <any>{
-  let apiUrl = 'http://www.informaciondetallada.com/busqueda/rest/placa/'
+  getCarPlate(carPlate): Observable<any> {
+    let apiUrl = 'http://www.informaciondetallada.com/busqueda/rest/placa/'
     // Tried adding headers with no luck
     //const headers = new Headers();
     //headers.append('Access-Control-Allow-Headers', 'Content-Type');
     //headers.append('Access-Control-Allow-Methods', 'GET');
     //headers.append('Access-Control-Allow-Origin', '*');
     return this.http.get(apiUrl + carPlate)
-  .map(response => response.json());
-}
-  /*
-  getCarPlate(carPlate) : Observable<any> {
-const headers = new Headers();
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-let options = new RequestOptions({ headers: headers });
-         // ...using get request
-         return this.http.get('https://jsonplaceholder.typicode.com/posts',options)
-                        // ...and calling .json() on the response to return data
-                         .map((res:Response) => res.json())
-                         //...errors if any
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error!!!'));
-
-}*/
-/*
-  getCarPlate(carPlate): Observable<any> {
-    let apiUrl = 'http://www.informaciondetallada.com/busqueda/rest/placa/'
-    // Tried adding headers with no luck
-    const headers = new Headers();
-    //headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    //headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-let options = new RequestOptions({ headers: headers });
-    return this.http.get('https://crossorigin.me/https://finance.yahoo.com/d/quotes.csv?s=AAPL&f=np',options)
     .map(response => response.json());
   }
 
-
-getCarPlate2(carPlate) {
-    var url = "http://finance.yahoo.com/d/quotes.csv?s=AAPL&f=np";
-    let headers = new Headers({ 'Access-Control-Allow-Origin': '*'});
-    let options = new RequestOptions({ headers: headers });
-    this.http.get(url, options).map(response => response.json());
-}
-
-  getCarPlate4(carPlate) {
-const headers = new Headers();
-    //headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    //headers.append('Access-Control-Allow-Methods', 'GET');
-    headers.append('Access-Control-Allow-Origin', '*');
-    
-    var url = "https://crossorigin.me/http://www.informaciondetallada.com/busqueda/rest/placa/JBE0131";
-  this.http.get(url,{headers}).toPromise().then(function(response){
-        console.log(response);
-    });     
-  }*/
 }

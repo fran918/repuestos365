@@ -12,6 +12,13 @@ constructor(private http:Http){
                    .map(res => res.json());
         }
         
+        updatePerfil(perfil:any){
+            console.log(perfil);
+            var headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+        return this.http.put('http://localhost:8000/api/editperfil/'+perfil._id,JSON.stringify(perfil),{headers:headers})
+        .map(res => res.json());
+        }
 
     }
 

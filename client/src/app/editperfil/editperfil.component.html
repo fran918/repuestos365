@@ -1,0 +1,31 @@
+<form class="form-inline" (submit)="updateStatus($event)">
+<div class="list-group" style="width: 100%;"  > 
+        <div class="list-group-item"  style="width: 300px;float: left; margin-left: auto;margin-right: auto;"> 
+            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
+        <div class="card-img-top"> 
+            <img src="{{profile.picture}}"  />
+        </div>
+        <div  class="card-block"> 
+           <h4>{{profile.nickname}}</h4>
+        </div>
+        <div  class="card-block"> 
+            <h5>{{profile.email}}</h5>
+        </div>
+                <form class="well" (submit)="editPerfil($event)">
+                <div  class="card-block"> 
+                  <input type="text" [(ngModel)]="profile.nombre" name="nombre" class="form-control" placeholder="Nombre">  
+                </div>
+                <div  class="card-block"> 
+                  <input type="text" [(ngModel)]="profile.apellido" name="apellido" class="form-control" placeholder="Apellido">  
+                </div>
+                <div  class="card-block"> 
+                  <input type="number" [(ngModel)]="profile.telefono" name="telefono" class="form-control" placeholder="Telefono">  
+                </div>
+                <div  class="card-block"> 
+                    <input type="submit" value="Editar"  class="btn btn-success">
+                </div>
+              </form>
+        </div>
+        </div>
+    </div>
+  </form>

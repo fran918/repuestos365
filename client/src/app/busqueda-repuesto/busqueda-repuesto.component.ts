@@ -1,44 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { apiRepuestosService } from '../services/api-repuestos.service';
-import { Repuestos } from '../../Repuestos';
-import { Auto } from '../../Auto';
+import { Auto } from './Auto';
+import { Pedido } from './Pedido';
 
 @Component({
   selector: 'app-busqueda-repuesto',
   templateUrl: './busqueda-repuesto.component.html',
-  styleUrls: ['./busqueda-repuesto.component.scss'],
-  providers:[apiRepuestosService]
+  styleUrls: ['./busqueda-repuesto.component.css'],
+  providers:[AuthService, apiRepuestosService]
 })
 export class BusquedaRepuestoComponent implements OnInit {
-repuestos:Repuestos[];
+profile:any;
 auto:Auto[];
-  constructor(private apiRepuestosService:apiRepuestosService) { 
+pedido:Pedido[]=[];
 
-        this.apiRepuestosService.getRepuestos().subscribe(repuestos =>{
-        console.log(repuestos);
-        this.repuestos=repuestos;
+repuesto:string;
+cantidad:number=1;
+
+  constructor(
+     private AuthService:AuthService,
+     private apiRepuestosService: apiRepuestosService) { 
+this.profile = JSON.parse(localStorage.getItem('profile'));
+       console.log(this.profile);
+      
         
-      })
-
   }
-
-
-addRepuesto(item:any){
-
-            var repuestos = this.repuestos;
-           
-  var newItem={
-    "repuesto":item,
-    "user_id":"asdafasasdasd"
+  
+addPedido(event:any){
+  event.preventDefault();
+  var newPedido={
+    "repuesto":this.repuesto,
+    "cantidad":this.cantidad,
+    "user":this.profile.identities[0].user_id
   }
-  console.log(newItem);
-
-  this.apiRepuestosService.addRepuesto(newItem)
-      .subscribe(repuestos => {
-      this.repuestos.push(repuestos);
+  
+  console.log(newPedido);
+  this.apiRepuestosService.addPedido(newPedido)
+      .subscribe(mipedido => {
+      this.pedido.push(mipedido);
       });
-
-
 }
 
 

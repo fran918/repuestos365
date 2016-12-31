@@ -33,6 +33,8 @@ import { ContactUsFormComponent } from './contact-us-form/contact-us-form.compon
 import { SearchPlateComponent } from './search-plate/search-plate.component';
 import { BusquedaRepuestoComponent } from './busqueda-repuesto/busqueda-repuesto.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
+import { EditperfilComponent } from './editperfil/editperfil.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     ContactUsFormComponent,
     SearchPlateComponent,
     BusquedaRepuestoComponent,
-    PerfilComponent
+    PerfilComponent,
+    CotizacionesComponent,
+    EditperfilComponent
   ],
   imports: [
     BrowserModule,

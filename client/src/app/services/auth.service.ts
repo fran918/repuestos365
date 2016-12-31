@@ -15,6 +15,7 @@ declare var Auth0: any;
 export class AuthService {
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
+  
   // Configure Auth0
   auth0 = new Auth0({
     domain: myConfig.domain,
@@ -25,18 +26,25 @@ export class AuthService {
   });
 
   private baseUrl: string = 'http://localhost:8080';
- // private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com/';
+  //private baseUrl: string = 'http://nodejs-mongo-persistent-rep-365.44fs.preview.openshiftapps.com';
   
   constructor(private router: Router, private http: Http) {
     // Add callback for lock `authenticated` event
-    /*this.lock.on("authenticated", (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-      console.log('authResult');
-    });*/
+    this.lock.on("authenticated", (result:any) => {
+      this.lock.getProfile(result.idToken, function(error:any, profile:any){
+        if(error){throw new Error(error);
+        }
+        localStorage.setItem('id_token', result.idToken);
+        localStorage.setItem('profile', JSON.stringify(profile));
+      })
+      
+    });
     var result = this.auth0.parseHash(window.location.hash);
 
     if (result && result.idToken) {
+      this.lock.getProfile(result.idToken, function(error:any, profile:any){localStorage.setItem('profile', JSON.stringify(profile));})
       localStorage.setItem('id_token', result.idToken);
+      localStorage.setItem('id_token3', result.idToken);
       this.router.navigate(['/home']);
     } else if (result && result.error) {
       alert('error: ' + result.error);
@@ -65,11 +73,11 @@ export class AuthService {
       email: email,
       password: password,
     }, function(err) {
-	  alert('El usuario ya esta registrado!!!'+err);
-      /*if (err.message == 'usuario ya exists') {
+	  alert('El usuario ya esta registrado!!!');
+      if (err.message == 'usuario ya exists') {
         alert("algo salió mal: " + err.message);
         console.log(err);
-      }¨*/
+      }
     });
    /* let body = {
       name: fullname,
@@ -80,7 +88,7 @@ export class AuthService {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request options
 
-    return this.http.post(this.baseUrl+'/api/auth-signup', body, options)
+    return this.http.post(this.baseUrl+'/api/auth-signup', bodyString, options)
     .subscribe((data:any) => {
       if(data.status === 200){
         let b = JSON.parse(data._body);
@@ -122,6 +130,7 @@ export class AuthService {
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
     this.router.navigateByUrl('/');
   };
   

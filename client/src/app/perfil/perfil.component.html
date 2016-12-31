@@ -3,18 +3,24 @@
         <div class="list-group-item"  style="width: 300px;float: left; margin-left: auto;margin-right: auto;"> 
             <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
         <div class="card-img-top"> 
-            <img src="http://www.wpclipart.com/signs_symbol/icons_oversized/male_user_icon.png"  />
+            <img src="{{profile.picture}}"  />
         </div>
         <div  class="card-block"> 
-           <h3>{{perfil.nombre}} {{perfil.apellido}}</h3>
+           <h4>{{profile.nickname}}</h4>
         </div>
                 <div  class="card-block"> 
-                Edad: {{perfil.edad}}
+                        <input type="button" value="Termina el Registro"  class="btn btn-success">
+                </div>
+                <div  class="card-block"> 
+                    <h5>{{profile.email}}</h5>
+                </div>
+                <div  class="card-block"> 
+                    
                 </div>
                
         
         <div  class="card-block"> 
-            <input type="button" value="Editar"  class="btn btn-primary">
+            <input type="button" value="Editar"  routerLink="/edit-perfil" routerLinkActive="active" class="btn btn-primary">
         </div>
         </div>
         </div>

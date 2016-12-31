@@ -1,32 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
 import { apiPerfilService } from '../services/api-perfil.service';
-
-import { Perfil } from '../../Perfil';
+import { AuthService } from '../services/auth.service';
+import { Perfil } from './Perfil';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
-  providers:[apiPerfilService]
+  providers:[apiPerfilService, AuthService]
 })
 export class PerfilComponent implements OnInit {
+  profile:any;
 perfil:Perfil[];
+perfil2:any = new Object();
 
-//id del usuario **se tiene que cambiar**
-id='5862bbaeba89250100cbbee1'; 
+nombre:'helooo';
 
   constructor(
-    private apiPerfilService:apiPerfilService) { 
-       var perfil = this.perfil;
-             
-            this.apiPerfilService.getPerfil(this.id).subscribe(perfil =>{
-            console.log(perfil);
-            this.perfil=perfil;
-            console.log(this.perfil);
-            })  
-console.log(this.perfil + '' );
-          
-            
+    private apiPerfilService:apiPerfilService,
+     private AuthService:AuthService) { 
+       this.profile = JSON.parse(localStorage.getItem('profile'));
+       console.log(this.profile);
+       /*
+            */
         }
 
   ngOnInit() {
