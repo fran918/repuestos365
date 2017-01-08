@@ -47,6 +47,10 @@ addPlaca(newItem:any){
         return this.http.post('http://localhost:8080/api/addplaca',JSON.stringify(newItem),{headers:headers})
         .map(res => res.json());
         }
+getmiPlaca(){
+   // console.log(placa);
+           return JSON.parse(localStorage.getItem('placa'));
+        }
 
 
 

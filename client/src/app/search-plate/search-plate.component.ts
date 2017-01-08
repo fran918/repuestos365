@@ -11,36 +11,44 @@ import { Placa } from './Placa';
   providers:[ApiRestService, apiRepuestosService]
 })
 export class SearchPlateComponent implements OnInit {
-    @Output() miplaca2: EventEmitter<any> = new EventEmitter();
 placa:Placa[]=[];
   constructor(private apiRest: ApiRestService, private apiRepuestosService:apiRepuestosService) { }
 
 
   getPlaca(miplaca:any){
+localStorage.removeItem('placa');
+
+
+
+
     console.log('placa');
     console.log(miplaca);
     if(miplaca.length == 7){
       this.apiRepuestosService.getPlaca(miplaca).subscribe((placa:any) =>{
       console.log(placa);
       this.placa=placa;
-        if(this.placa){console.log('SIIII');}else{  console.log('NOOOO');
+        if(this.placa){console.log('SIIII');
+      localStorage.setItem('placa', JSON.stringify(this.placa));}else{  console.log('NOOOO');
         console.log('plate');
         console.log(placa);
           if (placa == null) {
-            placa={"placa":"JBE0131","marca":"ZOTYE","modelo":"NOMADA 1.3","anio":"2007","color":"PLATEADO","clase":"VEHICULO UTILITARIO","servicio":"PARTICULAR","aniom":"2016","fecham":"27-06-2016","fechac":"26-06-2021"};
-           // this.apiRest.getCarPlate(placaAPI).subscribe((data:any) => {
+             this.apiRest.getCarPlate(miplaca).subscribe((data:any) => {
             console.log('data');
-           // placa=placaAPI;
+            placa=data;
+            if(data){localStorage.setItem('placa', JSON.stringify(data));}
               this.apiRepuestosService.addPlaca(placa)
                 .subscribe(miperfil => {
                 this.placa.push(placa );
+                console.log(this.placa);
+                
                 });
            
-           // });
-          } 
+            });
+          }else{}
         }
+
+
       })     
-      this.miplaca2.emit(this.placa);
     }
   }
             

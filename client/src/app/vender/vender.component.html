@@ -6,11 +6,36 @@
             <img src=""  />
         </div>
         <div  class="card-block"> 
-           <h4></h4>
+            <div class="form-group">
+                <label for="nombre_local">Nombre del Local</label>
+                <input type="text" [(ngModel)]="nombre_local" class="form-control" id="nombre_local">
+            </div>
         </div>
         <div  class="card-block"> 
-            <h5></h5>
+            <div class="form-group">
+                <label for="RUC">RUC del Local</label>
+                <input type="email" [(ngModel)]="RUC" class="form-control" id="RUC" maxlength="13">
+            </div>
         </div>
+        <div  class="card-block"> 
+            <div class="form-group">
+                <label for="telf">Teléfono</label>
+                <input type="number" [(ngModel)]="telf" class="form-control" id="telf">
+            </div>
+        </div>
+        <div  class="card-block"> 
+            <div class="form-group">
+                <label for="provincia">Provincia</label>
+                <input type="text" [(ngModel)]="provincia" class="form-control" id="provincia">
+            </div>
+        </div>
+        <div  class="card-block"> 
+            <div class="form-group">
+                <label for="edomicilio">Provincia</label>
+                <input type="checkbox" [(ngModel)]="edomicilio" id="edomicilio">
+            </div>
+        </div>
+
         <div  class="card-block"> 
             <h5>Aceptar las Condiciones</h5>
         </div>

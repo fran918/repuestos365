@@ -13,7 +13,7 @@ aceptar=false;
 newPerfil:any;
 profile:any;
 vendedor:Vendedor[]=[];
-lon:any; 
+lon:any; nombre_local:any=''; RUC:any=''; telf:any=''; provincia:any=''; edomicilio:any=''; 
 lat:any;
 perfil:any;
 eresVendedor:boolean=false;
@@ -23,7 +23,7 @@ eresVendedor:boolean=false;
    this.apiPerfilService.getVendedor(this.profile.identities[0].user_id).subscribe(perfil =>{
            // console.log(perfil);
             this.perfil=perfil;
-           // console.log(this.perfil);
+           console.log(this.perfil);
             })
             if(this.perfil){this.eresVendedor=true;}else{this.eresVendedor=false;}
   
@@ -35,7 +35,12 @@ eresVendedor:boolean=false;
                         "user_id":this.profile.identities[0].user_id,
                         "email":this.profile.email,
                         "lat":this.lat,
-                        "lng":this.lon
+                        "lng":this.lon,
+                        "nombre_local":this.nombre_local,
+                        "RUC":this.RUC,
+                        "telf":this.telf,
+                        "provincia":this.provincia,
+                        "edomicilio":this.edomicilio
                     }
     }
 

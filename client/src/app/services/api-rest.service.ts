@@ -39,6 +39,7 @@ export class ApiRestService {
     //headers.append('Access-Control-Allow-Methods', 'GET');
     //headers.append('Access-Control-Allow-Origin', '*');
     return this.http.get(apiUrl + carPlate)
+    //return this.http.get('http://localhost:8080/api/muestra')
     .map(response => response.json());
   }
 

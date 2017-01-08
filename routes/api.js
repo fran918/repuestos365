@@ -83,6 +83,29 @@ router.post('/auth-signup', function(req, res) {
 });
 
 //CONEXION MLAB
+/*
+//GET muestra placas**TEST PARA PLACAS**
+router.get('/muestra', function(req,res,next){
+   // res.send('REPUESTOS');
+    db.placamuestra.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos[0].JBB0131);
+        }
+})
+});
+
+
+*/
+
+
+
+
+
+
+
+
 
 //GET REPUESTOS
 router.get('/repuestos', function(req,res,next){
@@ -197,6 +220,21 @@ router.post('/addvendedor', function(req,res,next){
         //}
     
 });
+
+//SAVE Vehiculo
+router.post('/addvehiculo', function(req,res,next){
+    //res.send('task');
+    var vehiculo = req.body;
+	var vehiculoCol = db.collection('vehiculo');
+            vehiculoCol.save(vehiculo,function(err, vehiculo){
+                if(err){
+                    res.send(err);
+                }
+                res.json(vehiculo);
+            });
+    
+});
+
 //UPDATE PERFIL
 router.put('/editperfil/:id', function(req,res,next){
     var perfil = req.body;
