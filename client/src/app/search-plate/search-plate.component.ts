@@ -40,12 +40,19 @@ localStorage.removeItem('encontrar');
        // console.log('plate');
         //console.log(placa);
           if (placa == null) {
+<<<<<<< HEAD
              this.apiRest.getCarPlate(miplaca).subscribe((data:any) => {
           //  console.log('data');
             placa=data;
           //  console.log('data '+placa.modelo);
             if(placa.modelo){
             if(data){localStorage.setItem('placa', JSON.stringify(data));}
+=======
+            placa={"placa":"JBE0131","marca":"ZOTYE","modelo":"NOMADA 1.3","anio":"2007","color":"PLATEADO","clase":"VEHICULO UTILITARIO","servicio":"PARTICULAR","aniom":"2016","fecham":"27-06-2016","fechac":"26-06-2021"};
+            //this.apiRest.getCarPlate(miplaca).subscribe((data:any) => {
+            console.log('data');
+            //placa=data;
+>>>>>>> 633e3d9bdb2b80311371dc8a53ce846d64b123d1
               this.apiRepuestosService.addPlaca(placa)
                 .subscribe(miperfil => {
                 this.placa.push(placa );
