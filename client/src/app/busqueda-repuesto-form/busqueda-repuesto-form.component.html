@@ -1,0 +1,23 @@
+<div  class="form-group col-xs-12">
+  <div class="form-group col-xs-12 col-md-6">
+    <label class="sr-only" for="repuesto">Nombre del Repuesto</label>
+    <input type="text" class="form-control" [(ngModel)]="rep.repuesto" [ngModelOptions]="{standalone: true}" id="repuesto" placeholder="Nombre del Repuesto">
+  </div>
+  <div class="form-group col-xs-12 col-md-2">
+    <label class="sr-only" for="cantidad">Cantidad</label>
+    <input type="number" class="form-control" [(ngModel)]="rep.cantidad" [ngModelOptions]="{standalone: true}" id="cantidad" placeholder="1">
+  </div>
+  <div class="form-group col-xs-12 col-md-4">
+  <div  class="form-group col-xs-12">
+  <div  class="form-group col-xs-10">
+    <div class="divupload">
+  <input type="file" accept="image/*" (change)="changeListener($event)">
+  </div>
+  </div>
+  <div  class="form-group col-xs-2">
+  <img id="img" class="img-responsive" [src]="rep.image" >
+  </div>
+  </div>
+  </div>
+
+</div>

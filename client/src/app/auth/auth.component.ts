@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { AuthService } from '../services/auth.service';
@@ -32,5 +32,5 @@ export class AuthComponent implements OnInit {
     console.log('signup');
     this.auth.signUp(this.modelSignup.fullname,this.modelSignup.email, this.modelSignup.password)
   }
-
+  ngAfterViewInit() { }
 }

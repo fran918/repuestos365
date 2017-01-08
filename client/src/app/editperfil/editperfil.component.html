@@ -1,26 +1,32 @@
 <form class="form-inline" (submit)="updatePerfil($event)">
-<div class="list-group" style="width: 100%;"  > 
-        <div class="list-group-item"  style="width: 300px;float: left; margin-left: auto;margin-right: auto;"> 
-            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
-        <div class="card-img-top"> 
-            <img src="{{profile.picture}}"  />
+<div class="container"> 
+        <div > 
+            <div  > 
+        <div class=" text-center" style="margin-left: auto;margin-right: auto; width: 200px;"> 
+            <img src="{{image}}"  class="img-responsive  text-center"  />
         </div>
-        <div  class="card-block"> 
+        <div class="card-block text-center"> 
+            
+            <div class="divupload">
+            <input type="file" accept="image/*" (change)="changeListener($event)">
+            </div>
+        </div>
+        <div  class="card-block text-center"> 
            <h4>{{profile.nickname}}</h4>
         </div>
-        <div  class="card-block"> 
+        <div  class="card-block text-center"> 
             <h5>{{profile.email}}</h5>
         </div>
-                <div  class="card-block"> 
+                <div  class="card-block text-center"> 
                   <input type="text" [(ngModel)]="perfil2.nombre" name="nombre" class="form-control" placeholder="Nombre">  
                 </div>
-                <div  class="card-block"> 
+                <div  class="card-block text-center"> 
                   <input type="text" [(ngModel)]="perfil2.apellido" name="apellido" class="form-control" placeholder="Apellido">  
                 </div>
-                <div  class="card-block"> 
+                <div  class="card-block text-center"> 
                   <input type="number" [(ngModel)]="perfil2.telefono" name="telefono" class="form-control" placeholder="Telefono">  
                 </div>
-                <div  class="card-block"> 
+                <div  class="card-block text-center"> 
                     <input type="submit" value="Editar" class="btn btn-success">
                 </div>
         </div>

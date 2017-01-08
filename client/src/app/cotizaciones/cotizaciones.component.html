@@ -1,43 +1,71 @@
-
-<div class="list-group col-md-12" > 
-    <div class="list-group col-md-4" > 
-        <div class="list-group-item" *ngFor="let repuesto of repuestos"> 
-            <div  class="card" style="width: 100%; background-color: #fbfbfb; color: #000000;"> 
-        <div class="card-img-top"> 
-            <img src=""  />
-        </div>
-        <div  class="card-block"> 
-            Repuesto: {{repuesto.repuesto}}
-        </div>
-                <div  class="card-block"> 
-                Cantidad: {{repuesto.cantidad}}
-                </div>
-        <div  class="card-block"> 
-            <input type="button" value="Ver Pedido" (click)="ver_pedido(repuesto._id)" class="btn btn-success">
+   
+<div class="container"> 
+    <div class="col-xs-12 col-sm-4 " > 
+	<div class="col-xs-12" >
+	<h4>Lista de Pedidos</h4>
+	</div>
+        <div class="row col-xs-12" *ngFor="let repuesto of repuestos"> 
+            
+        <div  class="col-xs-12 item_pedido" (click)="ver_pedido(repuesto.id_carrito)"> 
+		<br />
+           <div style="float:left;"> Pedido Nro: </div> <div class="text_orange">{{repuesto.id_carrito}}</div>
+        <br />
         </div>
         </div>
-        </div>
+	
+	
+	
     </div>
     
-    <div class="list-group col-md-8" *ngIf="verrepuestos"> 
-        <div class="col-md-12"> 
-            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
-        <div class="card-img-top"> 
-            <img src=""  />
+    <div class="col-xs-12 col-sm-8"  *ngIf="verrepuestos"> 
+        <div  class="col-xs-12 "  *ngIf="verrepuestos"> 
+       <h2> <div style="float:left;">Pedido: </div> <div class="text_orange">{{pedido}}</div></h2>
+	   <div>
+          <br />
+		  <div (click)="deletePedido(pedido)"> <i class="fa fa-trash-o" aria-hidden="true"></i>Dar de Baja el Pedido</div>
+		  <br />
+           
+           </div>
         </div>
-        <div  class="card-block"> 
-           Repuesto: {{verrepuestos.repuesto}}
+       <div  class="col-md-12" *ngIf="verrepuestos"> 
+       <div  class="col-md-4" > 
+       <p> <i class="fa fa-phone" aria-hidden="true"></i>Llamar</p>
         </div>
-                <div  class="card-block"> 
-                Cantidad: {{verrepuestos.cantidad}}
+        <div  class="col-md-4" > 
+       <p> <i class="fa fa-shopping-cart" aria-hidden="true"></i>Comprar</p>
+        </div>
+        <div  class="col-md-4" > 
+       <p> <i class="fa fa-comments" aria-hidden="true"></i>Mensaje</p>
+        </div>
+        </div>
+        
+            
+        <div class="col-xs-12 col-sm-12 "  *ngFor="let ver of verrepuestos"> 
+            
+            <div  class="col-xs-12 col-sm-12  item_pedido "  *ngIf="verrepuestos"> 
+        <div class="col-xs-12 col-sm-12 "> 
+            <img src="{{ver.imagen}}" class="img-responsive" />
+        </div>
+        <div  class="col-xs-12 col-sm-10 "> 
+           Repuesto: {{ver.repuesto}}
+        </div>
+                <div  class="col-xs-12 col-sm-2 "> 
+                Cantidad: {{ver.cantidad}}
                 </div>
                
         
-        <div  class="card-block"> 
+        
+        </div>
+        <br />
+        </div>
+          
+<div  class="col-xs-12 col-sm-12 " *ngIf="verrepuestos"> 
             <input type="button" value="Responder"  class="btn btn-success">
-        </div>
-        </div>
         </div>
     </div>
     
+
+	
+<!-- -->
+
 </div>

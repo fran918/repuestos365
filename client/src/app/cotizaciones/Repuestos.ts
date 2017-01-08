@@ -15,6 +15,8 @@ aniom: string;
 fecham: string;
 fechac: string;
 img: string;
+image:string;
+id_carrito:any;
 
     title: string;
     repuestos: string;

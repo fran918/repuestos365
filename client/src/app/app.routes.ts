@@ -9,6 +9,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { EditperfilComponent } from './editperfil/editperfil.component';
 import { VenderComponent } from './vender/vender.component';
+import { VendedoresComponent } from './vendedores/vendedores.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 
 
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'edit-perfil',   component: EditperfilComponent },
   { path: 'pedidos',   component: PedidosComponent },
   { path: 'vender',   component: VenderComponent },
+  { path: 'vendedores',   component: VendedoresComponent },
   { path: 'promotions-brands',   component: PromotionsBrandsComponent },
   { path: 'promotions',   component: PromotionsComponent },
   { path: '**',     component: PageNotFoundComponent }, 

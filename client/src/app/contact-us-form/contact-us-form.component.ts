@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
 
 import { EmailModel } from './email.model';
 
@@ -27,5 +27,5 @@ export class ContactUsFormComponent implements OnInit {
     console.log(emailConfig);
     this.apiRest.sendEmail(emailConfig);
   }
-
+  ngAfterViewInit() { }
 }

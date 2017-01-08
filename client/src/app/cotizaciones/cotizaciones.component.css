@@ -1,0 +1,10 @@
+.item_pedido:hover {
+    background-color: #404040;
+}
+.text_orange{
+  color: #E37705;
+  float:left;
+}
+.icon-cog {
+  color: white;
+}

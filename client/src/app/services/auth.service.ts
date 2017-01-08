@@ -72,7 +72,7 @@ export class AuthService {
       name:fullname,
       email: email,
       password: password,
-    }, function(err) {
+    }, function(err) {console.log(err);
 	  alert('El usuario ya esta registrado!!!');
       if (err.message == 'usuario ya exists') {
         alert("algo salió mal: " + err.message);

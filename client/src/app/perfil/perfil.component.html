@@ -1,25 +1,28 @@
 
-<div class="list-group" style="width: 100%;"  > 
-        <div class="list-group-item"  style="width: 300px;float: left; margin-left: auto;margin-right: auto;"> 
-            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
-        <div class="card-img-top"> 
-            <img src="{{profile.picture}}"  />
+<div class="container"   > 
+        <div  > 
+            <div  > 
+        <div class=" text-center" style="margin-left: auto;margin-right: auto; width: 200px;"> 
+            <img src="{{perfil2.imagen}}"  class="img-responsive  text-center" />
         </div>
-        <div  class="card-block"> 
+        <div  class="card-block text-center"> 
+           <h4>{{perfil2.nombre}} {{perfil2.apellido}}</h4>
+        </div>
+        <div  class="card-block text-center"> 
+           <h4>{{profile.telefono}}</h4>
+        </div>
+        <div  class="card-block text-center"> 
            <h4>{{profile.nickname}}</h4>
         </div>
-                <div  class="card-block"> 
+                <div  class="card-block text-center"> 
                         <input type="button" value="Termina el Registro"  class="btn btn-success">
                 </div>
-                <div  class="card-block"> 
+                <div  class="card-block text-center"> 
                     <h5>{{profile.email}}</h5>
-                </div>
-                <div  class="card-block"> 
-                    
                 </div>
                
         
-        <div  class="card-block"> 
+        <div  class="card-block text-center"> 
             <input type="button" value="Editar"  routerLink="/edit-perfil" routerLinkActive="active" class="btn btn-primary">
         </div>
         </div>

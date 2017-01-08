@@ -1,0 +1,51 @@
+    <div class="container">
+  <div class="col-xs-12 col-sm-8"> 
+        <div class="col-xs-12 col-sm-4 text-center"> 
+		
+            <img  class="img-responsive"src="{{vers.imagen}}" width="auto" />
+        </div>
+				<div  class="col-xs-12 col-sm-8 text-center"> 
+				<div  class="col-xs-12"> 
+				<strong>Repuesto:{{vers.repuesto}}</strong> 
+				</div>
+                <div  class="col-xs-12"> 
+				<strong>Cantidad:{{vers.cantidad}}</strong> 
+				</div>
+                </div>
+               
+        
+        
+        </div>
+			<div class="col-xs-12 col-sm-4">
+			<div  class="col-xs-12"> 
+			<h5>Tipo: </h5>
+			<select style="height: 40px;" class="form-control" name="tipo" [(ngModel)]="tipo">
+                <option value="original">  
+                Original
+                </option>
+				<option value="usado">  
+                Usado
+                </option>
+            </select>
+			</div>
+			<div  class="col-xs-12"> 
+			<h5>Valor: </h5>
+			<input type="number" [(ngModel)]="valor" name="valor" class="form-control">
+			</div>
+			<div  class="col-xs-12"> 
+			<h5>Cantidad: </h5>
+			<input type="number" [(ngModel)]="cantidad" name="cantidad" class="form-control">
+			</div>
+			<div  class="col-xs-12"> 
+			<img  class="img-responsive" id="img" [src]="image">
+			</div>
+			<div  class="col-xs-12"> 
+			<div class="form-group">
+            <div class="divupload">
+            <input type="file" accept="image/*" (change)="changeListener($event)">
+            </div>
+            </div>
+			</div>
+			</div>
+	</div>
+	

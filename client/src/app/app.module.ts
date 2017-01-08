@@ -37,6 +37,13 @@ import { CotizacionesComponent } from './cotizaciones/cotizaciones.component';
 import { EditperfilComponent } from './editperfil/editperfil.component';
 import { VenderComponent } from './vender/vender.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { BusquedaRepuestoFormComponent } from './busqueda-repuesto-form/busqueda-repuesto-form.component';
+import { VendedoresComponent } from './vendedores/vendedores.component';
+import { OrdenPipe } from './pedidos/orden.pipe';
+import { AlertComponent } from './alert/alert.component';
+import { EditvendedorComponent } from './editvendedor/editvendedor.component';
+import { PedidosFormComponent } from './pedidos-form/pedidos-form.component';
+import { VervendedorComponent } from './vervendedor/vervendedor.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +64,14 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     CotizacionesComponent,
     EditperfilComponent,
     VenderComponent,
-    PedidosComponent
+    PedidosComponent,
+    BusquedaRepuestoFormComponent,
+    VendedoresComponent,
+    OrdenPipe,
+    AlertComponent,
+    EditvendedorComponent,
+    PedidosFormComponent,
+    VervendedorComponent
   ],
   imports: [
     BrowserModule,

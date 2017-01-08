@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
 
 import { ApiRestService } from '../services/api-rest.service';
 
@@ -27,5 +27,5 @@ export class ContactUsComponent implements OnInit {
   sendEmail(email){
 
   }
-
+  ngAfterViewInit() { }
 }

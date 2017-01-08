@@ -1,13 +1,11 @@
-<form class="form-inline" (submit)="addPedido($event)">
-  <div class="form-group">
-    <label class="sr-only" for="repuesto">Nombre del Repuesto</label>
-    <input type="text" class="form-control" [(ngModel)]="repuesto" [ngModelOptions]="{standalone: true}" id="repuesto" placeholder="Nombre del Repuesto">
+<form class="col-xs-12" >
+  <div   class="col-xs-12" >
+  <app-busqueda-repuesto-form *ngFor="let f of form" [id]="sub2" [submit]="submit"></app-busqueda-repuesto-form>
   </div>
-  <div class="form-group">
-    <label class="sr-only" for="cantidad">Cantidad</label>
-    <input type="number" class="form-control" [(ngModel)]="cantidad" [ngModelOptions]="{standalone: true}" id="cantidad" placeholder="1">
+  <div   class="col-xs-12">
+  <button type="button" class="btn btn-warning"  (click)="addForm()">Añadir Otro Repuesto</button>
+  <button type="submit" class="btn btn-warning"  (click)="addPedido()" >Procesar Pedido</button>
   </div>
-  
-  <button type="submit" class="btn btn-warning"  routerLink="/cotizaciones" routerLinkActive="active" >Buscar Repuesto</button>
 </form>
 
+ 

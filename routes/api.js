@@ -98,6 +98,50 @@ router.get('/muestra', function(req,res,next){
 
 
 */
+//GET FORM PLACA - COMBUSTIBLE
+router.get('/fpcombustible', function(req,res,next){
+   // res.send('REPUESTOS');
+    db.combustible.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos);
+        }
+})
+});
+//GET FORM PLACA - MARCAS
+router.get('/fpmarcas', function(req,res,next){
+   // res.send('REPUESTOS');
+    db.marcas.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos);
+        }
+})
+});
+//GET FORM PLACA - TRACCIONES
+router.get('/fptracciones', function(req,res,next){
+   // res.send('REPUESTOS');
+    db.tracciones.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos);
+        }
+})
+});
+//GET FORM PLACA - TRANSMISIONES
+router.get('/fptransmisiones', function(req,res,next){
+   // res.send('REPUESTOS');
+    db.transmisiones.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos);
+        }
+})
+});
 
 
 
@@ -105,10 +149,97 @@ router.get('/muestra', function(req,res,next){
 
 
 
+//GET PEDIDOS
+router.get('/pedidos/:user', function(req,res,next){
+   // res.send('REPUESTOS');
 
+    db.repuestos.find({user:req.params.user},function(err,pedidos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(pedidos);
+        }
+})
+});
+
+//GET PEDIDOS - VENDEDOR
+router.get('/pedidos', function(req,res,next){
+    db.repuestos.find(function(err,pedidos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(pedidos);
+            
+        }
+})
+});
+
+//GET PEDIDOS - VENDEDOR -REFRESH
+router.get('/pedidosref/:id', function(req,res,next){
+    db.repuestos.find(function(err,pedidos){
+        console.log('---------------------------'+req.params.id);
+        if(err){
+        res.send(err);}else{
+                for(var j =0; j< pedidos.length;j++){
+                    if(pedidos[j].id_carrito == req.params.id){
+                               pedidos.splice(0, j+1);
+                            }else{
+                            }
+                }
+                if(pedidos){res.json(pedidos);}
+            
+            
+        }
+})
+});
+
+//GET PEDIDOS COT - VENDEDOR 
+router.get('/getPedidosCot/:id', function(req,res,next){
+    db.cot_pedido.find({id_carrito:req.params.id.toString},function(err,pedidos){
+        if(err){
+            res.send(err);}else{res.json(pedidos);
+        }
+})
+});
+
+//SAVE UN PEDIDO COMPLETO
+router.post('/addrepuestocarrito', function(req,res,next){
+    var item = req.body;
+            db.repuestos.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+    
+});
+
+//SAVE ITEM PEDIDO VENDEDOR
+router.post('/additemvend', function(req,res,next){
+    var item = req.body;
+            db.cot_item.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+    
+});
+
+//SAVE COMPLETO PEDIDO VENDEDOR
+router.post('/addCompVend', function(req,res,next){
+    var item = req.body;
+            db.cot_pedido.save(item,function(err, item){
+                if(err){
+                    res.send(err);
+                }
+                res.json(item);
+            });
+    
+});
 
 //GET REPUESTOS
-router.get('/repuestos', function(req,res,next){
+router.get('/repuestos/user', function(req,res,next){
    // res.send('REPUESTOS');
     db.carrito.find(function(err,repuestos){
         if(err){
@@ -119,11 +250,35 @@ router.get('/repuestos', function(req,res,next){
 })
 });
 
+//GET VENDEDORES
+router.get('/vendedores', function(req,res,next){
+    db.vendedor.find(function(err,repuestos){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(repuestos);
+        }
+})
+});
+
 //GET REPUESTO
 
-router.get('/repuesto/:id', function(req,res,next){
-    //console.log(req.params.id);
-   db.carrito.findOne({_id:mongojs.ObjectId(req.params.id)},function(err,task){
+router.get('/pedido/:id', function(req,res,next){
+    console.log(req.params.id);
+   db.carrito.find({id_carrito:req.params.id},function(err,task){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(task);
+        }
+});
+});
+
+//GET UN ITEM DEL PEDIDO
+
+router.get('/itemPedido/:id', function(req,res,next){
+    var id=req.params.id.toString();
+    db.carrito.findOne({_id:mongojs.ObjectId(id)},function(err,task){
         if(err){
             res.send(err);
         }else{
@@ -159,7 +314,7 @@ router.get('/placa/:id', function(req,res,next){
 
 //GET VENDEDOR
 router.get('/vendedor/:id', function(req,res,next){
-    db.vendedor.findOne({user_id:req.params.id},function(err,placa){
+    db.vendedor.findOne({email:req.params.id},function(err,placa){
         if(err){
             res.send(err);
         }else{
@@ -168,8 +323,19 @@ router.get('/vendedor/:id', function(req,res,next){
 });
 });
 
-//SAVE UN ITEM
-router.post('/addrepuestocarrito', function(req,res,next){
+//GET VENDEDOR
+router.get('/checkV/:id', function(req,res,next){
+    db.vendedor.findOne({email:req.params.id},function(err,check){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(check);
+        }
+});
+});
+
+//SAVE 
+router.post('/addpedidocarrito', function(req,res,next){
     var item = req.body;
 
 
@@ -181,6 +347,7 @@ router.post('/addrepuestocarrito', function(req,res,next){
             });
     
 });
+
 
 //SAVE PLACA
 router.post('/addplaca', function(req,res,next){
@@ -265,7 +432,33 @@ router.put('/editperfil/:id', function(req,res,next){
     
 });
 
+//DELETE PEDIDO
+router.delete('/deletePedido/:id', function(req,res,next){
+    console.log(req.params.id);
+    var id=req.params.id.toString();
+    db.repuestos.remove({id_carrito:id},function(err,pedido){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(pedido);
+        }
+    });
+    
+});
 
+//DELETE TIENDA
+router.delete('/deleteTienda/:id', function(req,res,next){
+    console.log(req.params.id);
+    var id=req.params.id.toString();
+    db.vendedor.remove({_id:mongojs.ObjectId(req.params.id)},function(err,tienda){
+        if(err){
+            res.send(err);
+        }else{
+            res.json(tienda);
+        }
+    });
+    
+});
 // END-CONEXION MLAB
 
 

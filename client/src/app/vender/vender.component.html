@@ -1,53 +1,108 @@
-<form class="form-inline" (submit)="vender($event)" *ngIf="eresVendedor">
-<div class="list-group" style="width: 100%;"  > 
-        <div class="list-group-item"  style="width: 300px;float: left; margin-left: auto;margin-right: auto;"> 
-            <div  class="card" style=" background-color: #fbfbfb; color: #000000;"> 
-        <div class="card-img-top"> 
-            <img src=""  />
+
+  <div class="container">
+  
+ <form (submit)="vender($event)">
+ <div class="contac-us col-md-12 col-xs-12">
+    <div class="row row-content">
+        <div class="col-lg col-right">
+            <sebm-google-map [latitude]="mapConfi.lat" [longitude]="mapConfi.lon" [zoom]="mapConfi.zoom" [zoomControl]="mapConfi.zoomControl" [zoom]="mapConfi.styles">
+                <sebm-google-map-marker [markerDraggable]="true" [(latitude)]="lat2" [(longitude)]="lng2"  (dragEnd)="pos($event)"></sebm-google-map-marker>
+            </sebm-google-map>
         </div>
-        <div  class="card-block"> 
+    </div>
+
+</div>
+<div class="col-md-12" > 
+    <div class="col-md-12" > 
+            <div>
+        <div  class="col-md-12"> 
+             <div class="col-md-12">
+            <img id="img" class="img-responsive" [src]="image"  height="150">
+                </div>
+                <div class="col-md-12 form-group">
+                    <div class="divupload">
+                    <input type="file" accept="image/*" (change)="changeListener($event)">
+                    </div>
+                
+                
+                </div>
+        </div>
+
+        <div  class="col-md-12"> 
+        <div class="form-group">
+        <!-- <label for="name">Email:</label> -->
+        <input type="text" class="form-control" [(ngModel)]="modelSignup.fullname" [ngModelOptions]="{standalone: true}" required #fullname placeholder="Nombre Completo">
+        </div>
+        </div>
+        <div  class="col-md-12"> 
+        <div class="form-group">
+            <!-- <label for="name">Email:</label> -->
+            <input type="email" class="form-control" [(ngModel)]="modelSignup.email" [ngModelOptions]="{standalone: true}" required #emailsignup placeholder="user@dominio.com">
+        </div>
+        </div>    
+        <div  class="col-md-12"> 
+        <div class="form-group">
+            <!-- <label for="name">Contraseña:</label> -->
+            <input type="password" class="form-control" [(ngModel)]="modelSignup.password" [ngModelOptions]="{standalone: true}" required #passwordsignup placeholder="Contraseña">
+        </div>
+        </div>
+         
+        
+        <div  class="col-md-12"> 
             <div class="form-group">
                 <label for="nombre_local">Nombre del Local</label>
-                <input type="text" [(ngModel)]="nombre_local" class="form-control" id="nombre_local">
+                <input type="text" [(ngModel)]="nombre_local" class="form-control" name="nombre_local">
             </div>
         </div>
-        <div  class="card-block"> 
+        <div  class="col-md-12"> 
             <div class="form-group">
                 <label for="RUC">RUC del Local</label>
-                <input type="email" [(ngModel)]="RUC" class="form-control" id="RUC" maxlength="13">
+                <input type="number" [(ngModel)]="RUC" class="form-control" name="RUC" maxlength="13">
             </div>
         </div>
-        <div  class="card-block"> 
+        <div  class="col-md-12"> 
             <div class="form-group">
                 <label for="telf">Teléfono</label>
-                <input type="number" [(ngModel)]="telf" class="form-control" id="telf">
+                <input type="number" [(ngModel)]="telf" class="form-control" name="telf">
             </div>
         </div>
-        <div  class="card-block"> 
+        <div  class="col-md-12"> 
             <div class="form-group">
                 <label for="provincia">Provincia</label>
-                <input type="text" [(ngModel)]="provincia" class="form-control" id="provincia">
+                <input type="text" [(ngModel)]="provincia" class="form-control" name="provincia">
             </div>
         </div>
-        <div  class="card-block"> 
+        <div  class="col-md-12"> 
             <div class="form-group">
-                <label for="edomicilio">Provincia</label>
-                <input type="checkbox" [(ngModel)]="edomicilio" id="edomicilio">
+                <label for="edomicilio">Entrega a Domicilio</label>
+                <input type="checkbox" [(ngModel)]="edomicilio" name="edomicilio">
+            </div>
+        </div>
+        <div  class="col-md-12"> 
+            <div class="form-group">
+                <select  class="form-control" #select multiple (change)="change($event.target.options)">
+                    <option *ngFor="let item of myOptions" [value]="item.nombre">
+                    {{item.nombre}}
+                    </option>
+                </select>
             </div>
         </div>
 
-        <div  class="card-block"> 
+        <div  class="col-md-12"> 
             <h5>Aceptar las Condiciones</h5>
         </div>
         <div  class="card-block"> 
             <input type="checkbox" (click)="aceptarVender()">
         </div>
                 
-                <div  class="card-block" *ngIf="aceptar"> 
+                <div  class="col-md-12" *ngIf="aceptar"> 
                     <input type="submit" value="Aceptar" class="btn btn-success">
                 </div>
         </div>
+        
         </div>
     </div>
 </form>
-<app-cotizaciones *ngIf="!eresVendedor"></app-cotizaciones>
+
+
+</div>

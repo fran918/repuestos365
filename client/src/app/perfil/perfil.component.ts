@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
 
 import { apiPerfilService } from '../services/api-perfil.service';
 import { AuthService } from '../services/auth.service';
@@ -18,14 +18,20 @@ nombre:'helooo';
 
   constructor(
     private apiPerfilService:apiPerfilService,
-     private AuthService:AuthService) { 
+     private AuthService:AuthService) {
+        
        this.profile = JSON.parse(localStorage.getItem('profile'));
-       console.log(this.profile);
+     //  console.log(this.profile);
+       this.apiPerfilService.getPerfil(this.profile.identities[0].user_id).subscribe(perfil =>{
+        //    console.log(perfil);
+            this.perfil2=perfil;
+          // console.log(this.perfil2);
+            }) 
        /*
             */
         }
 
   ngOnInit() {
   }
-
+  ngAfterViewInit() { }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
 import { apiRepuestosService } from '../services/api-repuestos.service';
 import { Repuestos } from './Repuestos';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cotizaciones',
@@ -13,45 +14,53 @@ repuestos:Repuestos[];
 verrepuestos:Repuestos[]=[];
 repuesto:string;
 cantidad:number;
-  constructor(private apiRepuestosService:apiRepuestosService) { 
-      this.apiRepuestosService.getRepuestos().subscribe(repuestos =>{
-       // console.log(repuestos);
+profile:any;
+  constructor(private router: Router,private apiRepuestosService:apiRepuestosService) { 
+    this.profile = JSON.parse(localStorage.getItem('profile'));
+      this.apiRepuestosService.getMisPedidos(this.profile.identities[0].user_id).subscribe(repuestos =>{
+       //console.log(repuestos);
         this.repuestos=repuestos;
 
       })
 
   }
-
+pedido:any;
 ver_pedido(repuesto){
-            this.apiRepuestosService.getRepuesto(repuesto).subscribe(repuesto =>{
-          //  console.log(repuesto);
+ // console.log(repuesto);
+  this.pedido=repuesto;
+            this.apiRepuestosService.getMiPedido(repuesto).subscribe(repuesto =>{
+      //    console.log(repuesto);
             this.verrepuestos=repuesto;
             })
           }  
-    
-
-
-
-addRepuesto(item:any){
-            var repuestos = this.repuestos;
+deletePedido(id:any){
+  //console.log(id);
+   var pedido = this.repuestos;
+   //console.log(pedido);
+            this.apiRepuestosService.deletePedido(id).subscribe(data => {
+              if(data.n == 1){
+                for(var i =0; i< pedido.length;i++){
+                  if(pedido[i].id_carrito == id){
+                    pedido.splice(i, 1);
+                    //   console.log(pedido[i]);
+                  }
+                }
+              }else{
+               // console.log(data);
+              }
            
-  var newItem={
-    "repuesto":item,
-    "user_id":"asdafasasdasd"
-  }
-  //console.log(newItem);
-
-  this.apiRepuestosService.addRepuesto(newItem)
-      .subscribe(repuestos => {
-      this.repuestos.push(repuestos);
-      });
+      this.router.navigate(['home']);
+              
+            })
+            
+        }    
 
 
-}
+
 
 
 
   ngOnInit() {
   }
-
+  ngAfterViewInit() { }
 }

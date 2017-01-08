@@ -6,6 +6,7 @@ import {
   style,
   transition,
   animate
+  ,AfterViewInit
 } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import { Router } from '@angular/router';
@@ -73,5 +74,5 @@ export class WelcomeComponent implements OnInit {
 
     
   }
-
+  ngAfterViewInit() { }
 }

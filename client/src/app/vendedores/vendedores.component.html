@@ -1,0 +1,42 @@
+ <div class="container"   > 
+  <div class="col-md-12" >
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="..." alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <div class="col-md-10">
+    <h4 class="media-heading">{{vendedor.nombre_local}}</h4>
+	</div>
+    <div class="col-md-2">
+    <a><h4 class="media-heading">Ver</h4></a>
+	<a><h4 class="media-heading">Editar</h4></a>
+	<a (click)="deleteTienda(vendedor._id)"><h4 class="media-heading">Eliminar</h4></a>
+	</div>
+  </div>
+  
+</div>
+  
+  <div class="media col-md-12" *ngFor="let vendedor of vendedores">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="..." alt="...">
+    </a>
+  </div>
+  <div class="media-body">
+    <div class="col-md-10">
+    <h4 class="media-heading">{{vendedor.nombre_local}}</h4>
+	</div>
+    <div class="col-md-2">
+    <a><h4 class="media-heading" (click)="ver(vendedor.email)">Ver</h4></a>
+	<a><h4 class="media-heading">Editar</h4></a>
+	<a (click)="deleteTienda(vendedor._id)"><h4 class="media-heading">Eliminar</h4></a>
+	</div>
+  </div>
+  
+</div>
+  
+  
+  
+</div>

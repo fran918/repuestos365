@@ -1,0 +1,14 @@
+.icon-cog {
+  color: white;
+}
+.container{color:white;}
+.item_pedido{
+    padding-bottom:20px;
+}
+.text_orange{
+  color: #E37705;
+  float:left;
+}
+.item_pedido:hover {
+    background-color: #404040;
+}

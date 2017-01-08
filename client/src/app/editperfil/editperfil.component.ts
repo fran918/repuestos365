@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,AfterViewInit} from '@angular/core';
 
 import { apiPerfilService } from '../services/api-perfil.service';
 import { AuthService } from '../services/auth.service';
@@ -16,7 +16,7 @@ perfil:Perfil[]=[];
 perfil2:any = new Object();
 perf:any= new Object();
 nombre:string;
-apellido:string;
+apellido:string;image:string;
 telefono:number;
 validar:boolean=false;
 usuarioid:any='';
@@ -26,7 +26,7 @@ usuarioid:any='';
             var perfil = this.perfil;
            this.profile = JSON.parse(localStorage.getItem('profile'));
             this.usuarioid=this.profile.identities[0].user_id;
-            console.log(this.usuarioid);
+           // console.log(this.usuarioid);
            // console.log(this.profile.identities[0].user_id);
             this.apiPerfilService.getPerfil(this.profile.identities[0].user_id).subscribe(perfil =>{
            // console.log(perfil);
@@ -48,12 +48,13 @@ usuarioid:any='';
     "user_id":this.profile.identities[0].user_id,
     "nombre":this.perfil2.nombre,
     "apellido":this.perfil2.apellido,
-    "telefono":this.perfil2.telefono
+    "telefono":this.perfil2.telefono,
+    "imagen":this.image
   }
   
-  console.log(newPerfil);
+ // console.log(newPerfil);
   
-  console.log(this.profile.identities[0].user_id);
+ // console.log(this.profile.identities[0].user_id);
   if(this.validar){
 this.apiPerfilService.updatePerfil(newPerfil).subscribe((miperfil:any) => {
   this.perfil.push(miperfil);
@@ -76,9 +77,22 @@ this.apiPerfilService.updatePerfil(newPerfil).subscribe((miperfil:any) => {
 }
 
 
+changeListener($event) : void {
+  this.readThis($event.target);
+}
 
+readThis(inputValue: any): void {
+  var file:File = inputValue.files[0];
+  var myReader:FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.image = myReader.result;
+    
+  }
+  myReader.readAsDataURL(file);
+}
   ngOnInit() {
      
   }
-
+  ngAfterViewInit() { }
 }

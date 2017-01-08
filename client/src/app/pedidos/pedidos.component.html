@@ -1,3 +1,39 @@
-<p>
-  pedidos works!
-</p>
+    
+<div class="container"> 
+    <div class="col-xs-12 col-sm-4 " > 
+	<div class="col-xs-12" >
+	<h4>Lista de Pedidos</h4>
+	</div>
+        <div class="row col-xs-12" *ngFor="let pedido of pedidos"> 
+            
+        <div  class="col-xs-12 item_pedido" (click)="ver_pedido(pedido.id_carrito)"> 
+		<br />
+           <div style="float:left;"> Pedido Nro: </div> <div class="text_orange">{{pedido.id_carrito}}</div>
+        <br />
+        </div>
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-sm-8"  *ngIf="verrepuestos"> 
+        <div  class="col-xs-12 "  *ngIf="verrepuestos"> 
+       <h2> <div style="float:left;">Pedido: </div> <div class="text_orange">{{pedido}}</div></h2><div>
+          <br /><br />
+           
+           </div>
+        </div>
+       
+        <div class="col-xs-12 col-sm-12 "  *ngFor="let ver of verrepuestos ; let i = index" > 
+            
+        <app-pedidos-form [idd]="ver" [id2]="i" [submit]="submit"></app-pedidos-form>
+          
+        </div>
+        <div  *ngIf="verrepuestos" class="col-xs-12 col-sm-6"> 
+        <button type="submit" class="btn btn-warning"  (click)="addPedido()" >Procesar Pedido</button>
+        </div>
+        <div  *ngIf="verrepuestos" class="col-xs-12 col-sm-6"> 
+            Total:{{precioTotal}}
+        </div>
+    </div>
+    
+</div>
+	

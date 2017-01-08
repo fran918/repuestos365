@@ -18,15 +18,15 @@ export class ApiRestService {
     let bodyString = JSON.stringify(body); // Stringify payload
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request options
-    console.log('body');
-    console.log(body);
-    console.log('options');
-    console.log(options);
+   // console.log('body');
+    //console.log(body);
+    //console.log('options');
+    //console.log(options);
 
     return this.http.post(this.baseUrl+'/api/send-email-contactus', body, options)
     .subscribe((data:any) => {
-      console.log('data');
-      console.log(data);
+    //  console.log('data');
+    //  console.log(data);
       alert('Enviado con Exito');
     });
   }
